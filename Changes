@@ -1,0 +1,11 @@
+Revision history for Perl extension DateTime::NaturalLanguage.
+
+0.01  Mon Nov 12 21:56:25 2007
+	- original version; created by h2xs 1.23 with options
+		-XAn DateTime::NaturalLanguage
+
+0.02 Wed Nov 14 11:44:49 2007
+	- added the "order" attribute to new calls,	to allow user
+		to dynamically change the order things are displayed in.
+		The possible values for "order" are desc, descending, descend,
+		asc, ascending, or ascend.

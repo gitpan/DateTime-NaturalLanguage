@@ -54,11 +54,11 @@ DIRFILESEP = /
 DFSEP = $(DIRFILESEP)
 NAME = DateTime::NaturalLanguage
 NAME_SYM = DateTime_NaturalLanguage
-VERSION = 0.02
+VERSION = 0.03
 VERSION_MACRO = VERSION
-VERSION_SYM = 0_02
+VERSION_SYM = 0_03
 DEFINE_VERSION = -D$(VERSION_MACRO)=\"$(VERSION)\"
-XS_VERSION = 0.02
+XS_VERSION = 0.03
 XS_VERSION_MACRO = XS_VERSION
 XS_DEFINE_VERSION = -D$(XS_VERSION_MACRO)=\"$(XS_VERSION)\"
 INST_ARCHLIB = blib/arch
@@ -250,7 +250,7 @@ RCS_LABEL = rcs -Nv$(VERSION_SYM): -q
 DIST_CP = best
 DIST_DEFAULT = tardist
 DISTNAME = DateTime-NaturalLanguage
-DISTVNAME = DateTime-NaturalLanguage-0.02
+DISTVNAME = DateTime-NaturalLanguage-0.03
 
 
 # --- MakeMaker macro section:
@@ -473,7 +473,7 @@ metafile : create_distdir
 	$(NOECHO) $(ECHO) '# http://module-build.sourceforge.net/META-spec.html' > META_new.yml
 	$(NOECHO) $(ECHO) '#XXXXXXX This is a prototype!!!  It will change in the future!!! XXXXX#' >> META_new.yml
 	$(NOECHO) $(ECHO) 'name:         DateTime-NaturalLanguage' >> META_new.yml
-	$(NOECHO) $(ECHO) 'version:      0.02' >> META_new.yml
+	$(NOECHO) $(ECHO) 'version:      0.03' >> META_new.yml
 	$(NOECHO) $(ECHO) 'version_from: lib/DateTime/NaturalLanguage.pm' >> META_new.yml
 	$(NOECHO) $(ECHO) 'installdirs:  site' >> META_new.yml
 	$(NOECHO) $(ECHO) 'requires:' >> META_new.yml
@@ -766,7 +766,7 @@ testdb_static :: testdb_dynamic
 # --- MakeMaker ppd section:
 # Creates a PPD (Perl Package Description) for a binary distribution.
 ppd:
-	$(NOECHO) $(ECHO) '<SOFTPKG NAME="$(DISTNAME)" VERSION="0,02,0,0">' > $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '<SOFTPKG NAME="$(DISTNAME)" VERSION="0,03,0,0">' > $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <TITLE>$(DISTNAME)</TITLE>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <ABSTRACT>Perl extension for converting seconds to "natural" time values.</ABSTRACT>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <AUTHOR>Luke Hutscal &lt;hybrid.basis@gmail.com&gt;</AUTHOR>' >> $(DISTNAME).ppd

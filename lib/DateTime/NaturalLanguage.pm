@@ -11,36 +11,22 @@ use 5.008008;
 use strict;
 use warnings;
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 
 # Preloaded methods go here.
 
-sub new {
-	my $self = shift;
-	my $defaults = {};
-	%$defaults = (
-		second 		=> $_{'second'} ? $_{'second'} : 'second',
-		seconds 	=> $_{'seconds'} ? $_{'seconds'} : 'seconds',
-		minute 		=> $_{'minute'} ? $_{'minute'} : 'minute',
-		minutes		=> $_{'minutes'} ? $_{'minutes'} : 'minutes',
-		hour 		=> $_{'hour'} ? $_{'hour'} : 'hour',
-		hours 		=> $_{'hours'} ? $_{'hours'} : 'hours',
-		day			=> $_{'day'} ? $_{'day'} : 'day',
-		days		=> $_{'days'} ? $_{'days'} : 'days',
-		week 		=> $_{'week'} ? $_{'week'} : 'week',
-		weeks 		=> $_{'weeks'} ? $_{'weeks'} : 'weeks',
-		month 		=> $_{'month'} ? $_{'month'} : 'month',
-		months 		=> $_{'months'} ? $_{'months'} : 'months',
-		year 		=> $_{'year'} ? $_{'year'} : 'year',
-		years 		=> $_{'years'} ? $_{'years'} : 'years',
-		display		=> $_{'display'} ? $_{'display'} : 2,	# This is how many are displayed by default
-		order		=> $_{'order'} ? $_{'order'} : 'desc',	# this is the order things are displayed in
-		@_, 
-	);
-	bless $defaults, $self;
-}
+## These are my local subs
+## users should not be able to get at them. 
 
+my $loadOptions = sub {
+	my $argsref = shift;
+	my $options = shift;
+	for(my $i = 0; $i < @{$argsref};$i+=2) {
+		$options->{lc(${$argsref}[$i])} = ${$argsref}[($i+1)];
+	}
+	return $options;
+};
 
 my $processInterval = sub {
 	my $self = shift;
@@ -53,6 +39,34 @@ my $processInterval = sub {
 	}
 	return undef;
 };
+
+
+sub new {
+	my $self = shift;
+	my $defaults = {};
+	## here we set the default values for our module.
+	%$defaults = (
+		second 		=> 'second',
+		seconds 	=> 'seconds',
+		minute 		=> 'minute',
+		minutes		=> 'minutes',
+		hour 		=> 'hour',
+		hours 		=> 'hours',
+		day			=> 'day',
+		days		=> 'days',
+		week 		=> 'week',
+		weeks 		=> 'weeks',
+		month 		=> 'month',
+		months 		=> 'months',
+		year 		=> 'year',
+		years 		=> 'years',
+		display		=> 2,		# This is how many are displayed by default
+		order		=> 'desc',	# this is the order things are displayed in
+	);
+	## here we load in the options supplied to us by the user.
+	$defaults = $loadOptions->([@_],$defaults);
+	bless $defaults, $self;
+}
 
 sub parse_seconds {
 	my $self = shift;

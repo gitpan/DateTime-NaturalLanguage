@@ -9,3 +9,6 @@ Revision history for Perl extension DateTime::NaturalLanguage.
 		to dynamically change the order things are displayed in.
 		The possible values for "order" are desc, descending, descend,
 		asc, ascending, or ascend.
+0.03 Thu Nov 15 2:16:32 2007
+	- adjusted the way that the options are loaded in - so we don't
+		have a ternary overload in our new() function.

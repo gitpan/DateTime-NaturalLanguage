@@ -11,23 +11,13 @@ use 5.008008;
 use strict;
 use warnings;
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 
 # Preloaded methods go here.
 
 ## These are my local subs
 ## users should not be able to get at them. 
-
-my $loadOptions = sub {
-	my $argsref = shift;
-	my $options = shift;
-	for(my $i = 0; $i < @{$argsref};$i+=2) {
-		$options->{lc(${$argsref}[$i])} = ${$argsref}[($i+1)];
-	}
-	return $options;
-};
-
 my $processInterval = sub {
 	my $self = shift;
 	my($var,$plural,$singular) = @$_;
@@ -62,9 +52,8 @@ sub new {
 		years 		=> 'years',
 		display		=> 2,		# This is how many are displayed by default
 		order		=> 'desc',	# this is the order things are displayed in
+		@_						# load in all the options passed to us
 	);
-	## here we load in the options supplied to us by the user.
-	$defaults = $loadOptions->([@_],$defaults);
 	bless $defaults, $self;
 }
 
